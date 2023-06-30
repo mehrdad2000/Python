@@ -16,8 +16,18 @@ code_list = []
 
 # Iterate over the rows and extract the code
 for row in rows:
-    code = row.find("td").text
+    code = row.find("td").text.strip()
     code_list.append(code)
 
-# Print the code list in the desired format
-print(code_list)
+# Generate the output string in the desired format
+output = "[" + ", ".join('"' + code + '" ' for code in code_list) + "]"
+
+# Print the output
+#print(output)
+
+# Write the output to a file
+output_file = "/tmp/codes"
+with open(output_file, "w") as file:
+    file.write(output)
+
+print("Output saved to", output_file)
