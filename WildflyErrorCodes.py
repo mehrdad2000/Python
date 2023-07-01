@@ -20,13 +20,10 @@ for row in rows:
     code_list.append(code)
 
 # Generate the output string in the desired format
-output = "[" + ", ".join('"' + code + '" ' for code in code_list) + "]"
-
-# Print the output
-#print(output)
+output = "WFCODES (?:" + "|".join(code_list) + ")"
 
 # Write the output to a file
-output_file = "/tmp/codes"
+output_file = "/tmp/wfcodes"
 with open(output_file, "w") as file:
     file.write(output)
 
