@@ -16,7 +16,14 @@ matches = re.findall(pattern, content, re.MULTILINE)#[:100]  # Limit to first 10
 # Convert the extracted numbers to a JSON string
 json_data = json.dumps(matches)
 
-# Write the JSON string to a file
-output_file = "/tmp/dbcodes"
+
+
+# Generate the output string in the desired format
+output = "DBERRORCODE (?:" + "|".join(match) + ")"
+
+# Write the output to a file
+output_file = "/tmp/dberror"
 with open(output_file, "w") as file:
-    file.write(json_data)
+    file.write(output)
+
+print("Output saved to", output_file)
